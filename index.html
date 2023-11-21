@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Namoro</title>
+</head>
+
+<script>
+    function mostrarResposta() {
+        // Redireciona para o link do YouTube
+        window.location.href = 'https://www.youtube.com/watch?v=cxIiQdsEej8';
+    }
+
+    function mudarPosicao() {
+        const buttonNao = document.getElementById('nao');
+
+        // Obtém as dimensões do botão
+        const buttonWidth = buttonNao.offsetWidth;
+        const buttonHeight = buttonNao.offsetHeight;
+
+        // Calcula a posição máxima permitida
+        const maxX = window.innerWidth - buttonWidth;
+        const maxY = window.innerHeight - buttonHeight;
+
+        // Gera posições aleatórias dentro dos limites
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        // Define a posição do botão
+        buttonNao.style.left = `${randomX}px`;
+        buttonNao.style.top = `${randomY}px`;
+    }
+
+</script>
+
+<body background-img="img/">
+    <div class="container">
+        <div class="text-pedido">
+            <h1>Um Pedido de Namoro Especial</h1>
+            <p>Oi Raniele ❤️,</p>
+            <p>Então, tenho uma proposta irresistível para você:
+            <p>que tal oficializarmos essa coisa de "ficante premium" e transformarmos isso em um "namoro oficial"?</p>
+            <p>Sim,
+                eu sei, você já é minha "namorada", mas acho que seria legal formalizar isso de uma maneira mais
+                oficial,</p>
+            <p>com direito a papel assinado e tudo mais.</p>
+            <p>O que você acha? Topa ser minha namorada oficialmente e garantir a papelada do nosso romance?</p>
+            <p>Estou esperando ansiosamente pela sua resposta!</p>
+            <p>Você aceita namorar comigo?</p>
+            <p class="heart" onclick="mostrarResposta()">Sim❤️</p>
+            <button class="custom-btn btn-8" id="nao" onmouseover="mudarPosicao()">Não</button>
+            <p id="resposta" style="display: none;"></p>
+        </div>
+    </div>
+</body>
+
+</html>
