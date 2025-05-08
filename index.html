@@ -2,50 +2,55 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedido de Namoro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos básicos caso o style.css não carregue */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffebee;
+        }
+        
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .heart {
+            cursor: pointer;
+            color: red;
+            font-size: 24px;
+            margin: 20px 0;
+            display: inline-block;
+        }
+        
+        .custom-btn {
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
 
-<script>
-    function mostrarResposta() {
-        // Redireciona para o link do YouTube
-        window.location.href = 'https://www.youtube.com/watch?v=cxIiQdsEej8';
-    }
-
-    function mudarPosicao() {
-        const buttonNao = document.getElementById('nao');
-
-        // Obtém as dimensões do botão
-        const buttonWidth = buttonNao.offsetWidth;
-        const buttonHeight = buttonNao.offsetHeight;
-
-        // Calcula a posição máxima permitida
-        const maxX = window.innerWidth - buttonWidth;
-        const maxY = window.innerHeight - buttonHeight;
-
-        // Gera posições aleatórias dentro dos limites
-        const randomX = Math.floor(Math.random() * maxX);
-        const randomY = Math.floor(Math.random() * maxY);
-
-        // Define a posição do botão
-        buttonNao.style.left = `${randomX}px`;
-        buttonNao.style.top = `${randomY}px`;
-    }
-
-</script>
-
-<body background-img="img/">
+<body>
     <div class="container">
         <div class="text-pedido">
             <h1>Um Pedido de Namoro Especial</h1>
             <p>Oi Raniele ❤️,</p>
-            <p>Então, tenho uma proposta irresistível para você:
+            <p>Então, tenho uma proposta irresistível para você:</p>
             <p>que tal oficializarmos essa coisa de "ficante premium" e transformarmos isso em um "namoro oficial"?</p>
-            <p>Sim,
-                eu sei, você já é minha "namorada", mas acho que seria legal formalizar isso de uma maneira mais
-                oficial,</p>
+            <p>Sim, eu sei, você já é minha "namorada", mas acho que seria legal formalizar isso de uma maneira mais oficial,</p>
             <p>com direito a papel assinado e tudo mais.</p>
             <p>O que você acha? Topa ser minha namorada oficialmente e garantir a papelada do nosso romance?</p>
             <p>Estou esperando ansiosamente pela sua resposta!</p>
@@ -55,6 +60,51 @@
             <p id="resposta" style="display: none;"></p>
         </div>
     </div>
+
+    <script>
+        function mostrarResposta() {
+            // Redireciona para o link do YouTube
+            window.location.href = 'https://www.youtube.com/watch?v=cxIiQdsEej8';
+        }
+
+        function mudarPosicao() {
+            const buttonNao = document.getElementById('nao');
+            
+            // Verifica se é um dispositivo móvel
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if(isMobile) {
+                // Comportamento diferente para mobile (ex: desabilita o movimento)
+                buttonNao.style.display = 'none';
+                alert('Ops, parece que você tentou clicar em "Não"! 😉');
+                return;
+            }
+
+            // Obtém as dimensões do botão
+            const buttonWidth = buttonNao.offsetWidth;
+            const buttonHeight = buttonNao.offsetHeight;
+
+            // Calcula a posição máxima permitida (dentro do container)
+            const container = document.querySelector('.container');
+            const maxX = container.offsetWidth - buttonWidth;
+            const maxY = container.offsetHeight - buttonHeight;
+
+            // Gera posições aleatórias dentro dos limites
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            // Define a posição do botão (relativa ao container)
+            buttonNao.style.position = 'absolute';
+            buttonNao.style.left = `${randomX}px`;
+            buttonNao.style.top = `${randomY}px`;
+        }
+
+        // Inicializa o botão "Não" com posição absoluta dentro do container
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttonNao = document.getElementById('nao');
+            buttonNao.style.position = 'absolute';
+        });
+    </script>
 </body>
 
 </html>
